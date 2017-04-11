@@ -1,1 +1,1 @@
-# ReactJS Practive Projects
+# ReactJS Practice Projects
