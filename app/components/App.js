@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Table from './Table';
 
 function App({ message }) {
-  return <div className="container">{message}</div>;
+  return <Table />;
 }
 
 App.propTypes = {
