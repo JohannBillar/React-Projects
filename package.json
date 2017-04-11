@@ -1,0 +1,67 @@
+{
+  "name": "reactjs-projects",
+  "version": "0.0.1",
+  "description": "React projects for learning",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint app",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:dev": "webpack-dev-server --progress --colors --hot --inline --watch --history-api-fallback",
+    "start:prod": "webpack && node server.js"
+  },
+  "keywords": [
+    "react",
+    "learning",
+    "projects"
+    "javascript"
+  ],
+  "author": "Johann Billar <jwbillar@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.14.0",
+    "compression": "^1.6.2",
+    "express": "^4.14.0",
+    "if-env": "^1.0.0",
+    "lodash": "^4.17.2",
+    "react": "^15.5.0",
+    "react-addons-css-transition-group": "^15.4.1",
+    "react-addons-transition-group": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-redux": "^5.0.4",
+    "react-router": "^4.0.0",
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.21.1",
+    "babel-eslint": "^7.1.1",
+    "babel-jest": "^17.0.2",
+    "babel-loader": "^6.2.8",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "css-loader": "^0.25.0",
+    "eslint": "^3.10.2",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.7.1",
+    "file-loader": "^0.9.0",
+    "jest": "^19.0.2",
+    "node-sass": "^3.10.1",
+    "react-test-renderer": "^15.4.1",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/JohannBillar/reactjs-projects.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JohannBillar/reactjs-projects/issues"
+  },
+  "homepage": "https://github.com/JohannBillar/reactjs-projects#readme"
+}
