@@ -1,0 +1,140 @@
+// Fonts 
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800|Open+Sans:300i,400');
+
+// Variables
+
+$body-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+$header-font-stack: 'Montserrat', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+
+
+// Mixins
+
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+
+// Box model
+
+html {
+  box-sizing: border-box;
+  background: #e9e9e9;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+// Base
+
+.container {
+  max-width: 960px; /* 1 */
+  margin-left: auto; /* 2 */
+  margin-right: auto; /* 2 */
+  padding-left: 20px; /* 3 */
+  padding-right: 20px; /* 3 */
+  width: 100%; /* 1 */
+ }
+
+body {
+  font-family: $body-font-stack;
+}
+
+a {
+  color: #ce453b;
+  text-decoration: none;
+
+  @include on-event {
+    color: #ce453b;
+    text-decoration: underline;
+  }
+}
+
+
+// Table reset
+
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// Table styles
+
+h1,
+th, 
+td {
+  padding: 8px;
+}
+
+.bgcolor {
+  background: #43cea2;
+  background: -webkit-linear-gradient(to left, #43cea2 , #185a9d);
+  background: linear-gradient(to left, #43cea2 , #185a9d); 
+}
+
+th {
+  border-bottom: 3px solid #1c2125;
+  padding: 24px;
+  background: #55606e;
+  color: white;
+  text-transform: uppercase;
+  font-family: $header-font-stack;  
+}
+
+td {
+  border-bottom: 2px solid #c2bfbf;
+  color: #343a41;
+}
+
+th:nth-of-type(1) { text-align: left; vertical-align: center; padding-left: 5px; }
+th:nth-of-type(2) { text-align: left; vertical-align: center; padding-left: 5px; }
+
+th:nth-of-type(3),
+th:nth-of-type(4) { text-align: center; vertical-align: center; }
+
+td:nth-of-type(1) { width: 5%; vertical-align: top; }
+td:nth-of-type(2) { width: 40%; vertical-align: center; }
+td:nth-of-type(3) { width: 30%; vertical-align: top; text-align: center }
+td:nth-of-type(4) { width: 25%; vertical-align: top; text-align: center }
+
+img {
+  width: 12%;
+  height: auto;
+  border: 1px solid black;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+tbody tr:nth-child(even) {
+  background-color: #d2d4d8;
+}
+
+caption {
+  background-color: #ce453b;
+  color: white;
+}
