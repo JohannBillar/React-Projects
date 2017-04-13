@@ -15,11 +15,11 @@ function TableRow(props) {
 }
 
 TableRow.propTypes = {
-  user: PropTypes.shapeOf({
+  user: PropTypes.shape({
     img: PropTypes.string,
     username: PropTypes.string,
     alltime: PropTypes.number,
-    recent: PropTypes.string,
+    recent: PropTypes.number,
   }),
   rank: PropTypes.number,
 };
