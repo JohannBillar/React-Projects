@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Table from './Table';
+import Leaderboard from './Leaderboard';
 
 function App({ message }) {
-  return <Table />;
+  return <Leaderboard />;
 }
 
 App.propTypes = {

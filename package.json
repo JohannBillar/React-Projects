@@ -19,7 +19,7 @@
   "author": "Johann Billar <jwbillar@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.14.0",
+    "axios": "^0.16.0",
     "compression": "^1.6.2",
     "express": "^4.14.0",
     "if-env": "^1.0.0",

@@ -1,6 +1,6 @@
 // Fonts 
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800|Open+Sans:300i,400');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600|Open+Sans:300,400');
 
 // Variables
 
@@ -101,11 +101,16 @@ th {
   color: white;
   text-transform: uppercase;
   font-family: $header-font-stack;  
+  font-weight: 600;
+  letter-spacing: .5px;
 }
 
 td {
   border-bottom: 2px solid #c2bfbf;
   color: #343a41;
+  a {
+    font-weight: 300;
+  }
 }
 
 th:nth-of-type(1) { text-align: left; vertical-align: center; padding-left: 5px; }
@@ -138,3 +143,21 @@ caption {
   background-color: #ce453b;
   color: white;
 }
+.sort-by {
+  cursor: pointer;
+}
+
+.sort-by:hover,
+.sort-by:focus {
+  text-decoration: underline;
+}
+
+.sort-by:after {
+  font-family: 'FontAwesome';
+  content: "\f0dc";
+  padding-left: 4px;
+}
+
+// TODO
+
+// leaderboard needs box shadow
