@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 
-function TableRow({ user, rank }) {
-  const { img, username, alltime, recent } = user;
+function TableRow(props) {
+  const { img, username, alltime, recent } = props.user;
   return (
     <tr>
-      <td>{rank}</td>
+      <td>{props.rank}</td>
       <td><a href={`https://www.freecodecamp.com/${username}`}><img src={img} alt="user profile" />{username}</a></td>
       <td>{recent}</td>
       <td>{alltime}</td>
@@ -13,7 +14,18 @@ function TableRow({ user, rank }) {
   );
 }
 
-function TableBody({ users, sortBy }) {
+TableRow.propTypes = {
+  user: PropTypes.shapeOf({
+    img: PropTypes.string,
+    username: PropTypes.string,
+    alltime: PropTypes.number,
+    recent: PropTypes.string,
+  }),
+  rank: PropTypes.number,
+};
+
+function TableBody(props) {
+  const { users, sortBy } = props;
   let count = 0;
   const sorted = users.sort((prevUser, currUser) => {
     if (sortBy === 'recent') {
@@ -32,6 +44,12 @@ function TableBody({ users, sortBy }) {
     </tbody>
   );
 }
+
+TableBody.propTypes = {
+  users: PropTypes.arrayOf(PropTypes.object),
+  sortBy: PropTypes.string,
+};
+
 
 function Table({ users, sortBy, onClickSort }) {
   return (
@@ -60,6 +78,12 @@ function Table({ users, sortBy, onClickSort }) {
     </table>
   );
 }
+
+Table.propTypes = {
+  users: PropTypes.arrayOf(PropTypes.object),
+  sortBy: PropTypes.string,
+  onClickSort: PropTypes.func,
+};
 
 class Leaderboard extends React.Component {
   constructor(props) {
