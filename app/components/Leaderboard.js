@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-function TableRow({ user, rank}) {
+function TableRow({ user, rank }) {
   const { img, username, alltime, recent } = user;
   return (
     <tr>
@@ -22,11 +22,12 @@ function TableBody({ users, sortBy }) {
       return prevUser.alltime > currUser.alltime ? -1 : 1;
     }
   });
+
   let count = 0;
   return (
     <tbody>
       {sorted.map((user, idx) => {
-        count+=1;
+        count += 1;
         return <TableRow user={user} key={idx} rank={count} />;
       })}
     </tbody>
@@ -41,8 +42,16 @@ function Table({ users, sortBy, onClickSort }) {
         <tr>
           <th>#</th>
           <th>Name</th>
-          <th onClick={() => onClickSort('recent')} className="sort-by">Points in past 30 days</th>
-          <th onClick={() => onClickSort('alltime')} className="sort-by">All time points</th>
+          <th>
+            <button onClick={() => onClickSort('recent')} className={`sort-by ${sortBy !== 'recent' ? 'isNotSelected' : ''}`} >
+              Points in past 30 days
+            </button>
+          </th>
+          <th>
+            <button onClick={() => onClickSort('alltime')} className={`sort-by ${sortBy !== 'alltime' ? 'isNotSelected' : ''}`} >
+              All time points
+            </button>
+          </th>
         </tr>
       </thead>
       <TableBody

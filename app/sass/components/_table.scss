@@ -1,6 +1,6 @@
 // Fonts 
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600|Open+Sans:300,400');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,800|Open+Sans:300,400');
 
 // Variables
 
@@ -94,7 +94,8 @@ td {
   background: linear-gradient(to left, #43cea2 , #185a9d); 
 }
 
-th {
+th,
+th button {
   border-bottom: 3px solid #1c2125;
   padding: 24px;
   background: #55606e;
@@ -105,6 +106,15 @@ th {
   letter-spacing: .5px;
 }
 
+th > button {
+  -webkit-appearance: nones;
+  -moz-appearance:    nones;
+  appearance:         nones;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
 td {
   border-bottom: 2px solid #c2bfbf;
   color: #343a41;
@@ -113,8 +123,8 @@ td {
   }
 }
 
-th:nth-of-type(1) { text-align: left; vertical-align: center; padding-left: 5px; }
-th:nth-of-type(2) { text-align: left; vertical-align: center; padding-left: 5px; }
+th:nth-of-type(1) { text-align: left; vertical-align: center; padding-left: 6px; }
+th:nth-of-type(2) { text-align: left; vertical-align: center; padding-left: 6px; }
 
 th:nth-of-type(3),
 th:nth-of-type(4) { text-align: center; vertical-align: center; }
@@ -147,6 +157,10 @@ caption {
   cursor: pointer;
 }
 
+.isNotSelected {
+  color: #ce453b;
+}
+
 .sort-by:hover,
 .sort-by:focus {
   text-decoration: underline;
@@ -158,6 +172,10 @@ caption {
   padding-left: 4px;
 }
 
+
+
 // TODO
 
 // leaderboard needs box shadow
+// header add logo
+// header set position fixed
