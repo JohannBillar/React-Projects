@@ -14,7 +14,7 @@ function TableRow({ user, rank }) {
 }
 
 function TableBody({ users, sortBy }) {
-  console.log(sortBy);
+  let count = 0;
   const sorted = users.sort((prevUser, currUser) => {
     if (sortBy === 'recent') {
       return prevUser.recent > currUser.recent ? -1 : 1;
@@ -23,7 +23,6 @@ function TableBody({ users, sortBy }) {
     }
   });
 
-  let count = 0;
   return (
     <tbody>
       {sorted.map((user, idx) => {
@@ -38,7 +37,7 @@ function Table({ users, sortBy, onClickSort }) {
   return (
     <table>
       <caption><h1>Leaderboard</h1></caption>
-      <thead>
+      <thead className="sticky">
         <tr>
           <th>#</th>
           <th>Name</th>
@@ -76,10 +75,25 @@ class Leaderboard extends React.Component {
   componentDidMount() {
     const sort = this.state.sortBy;
     this.getUserData(sort);
+
+    const table = document.querySelector('table');
+    const tableHeader = document.querySelector('thead');
+    const topOfTableHeader = tableHeader.offsetTop;
+
+    function fixHeader() {
+      if (window.scrollY >= topOfTableHeader) {
+        tableHeader.style.width = `${table.clientWidth}px`;
+        document.body.style.paddingTop = `${tableHeader.offsetHeight}px`;
+        document.body.classList.add('fixed');
+      } else {
+        document.body.style.paddingTop = 0;
+        document.body.classList.remove('fixed');
+      }
+    }
+    window.addEventListener('scroll', fixHeader);
   }
 
   getUserData(sort) {
-    console.log('getUserData fired with: ', sort);
     axios.get(`https://fcctop100.herokuapp.com/api/fccusers/top/${sort}`)
       .then(response => this.setState({ users: response.data }))
       .catch(error => console.log(error));

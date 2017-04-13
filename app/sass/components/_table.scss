@@ -3,13 +3,10 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,800|Open+Sans:300,400');
 
 // Variables
-
 $body-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
 $header-font-stack: 'Montserrat', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
 
-
 // Mixins
-
 @mixin on-event($self: false) {
   @if $self {
     &,
@@ -27,9 +24,7 @@ $header-font-stack: 'Montserrat', 'Helvetica Neue Light', 'Helvetica Neue', 'Hel
   }
 }
 
-
 // Box model
-
 html {
   box-sizing: border-box;
   background: #e9e9e9;
@@ -40,7 +35,6 @@ html {
 }
 
 // Base
-
 .container {
   max-width: 960px; /* 1 */
   margin-left: auto; /* 2 */
@@ -64,9 +58,7 @@ a {
   }
 }
 
-
 // Table reset
-
 table, caption, tbody, tfoot, thead, tr, th, td {
   margin: 0;
   padding: 0;
@@ -75,12 +67,33 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   font: inherit;
   vertical-align: baseline;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+table, caption {
+  -webkit-box-shadow: 6px 10px 18px -1px rgba(0,0,0,0.38);
+  -moz-box-shadow: 6px 10px 18px -1px rgba(0,0,0,0.38);
+  box-shadow: 6px 10px 18px -1px rgba(0,0,0,0.38);
 }
 
 // Table styles
+caption {
+  height: 125px;
+  background-color: #ce453b;
+  color: white;
+}
+
+.fixed thead {
+  position: fixed;
+  display: table;
+  box-shadow: 0 5px rgba(0,0,0,0.1);
+  top: 0;
+}
 
 h1,
 th, 
@@ -123,11 +136,10 @@ td {
   }
 }
 
-th:nth-of-type(1) { text-align: left; vertical-align: center; padding-left: 6px; }
-th:nth-of-type(2) { text-align: left; vertical-align: center; padding-left: 6px; }
-
-th:nth-of-type(3),
-th:nth-of-type(4) { text-align: center; vertical-align: center; }
+th:nth-of-type(1) { width: 5%; text-align: left; padding-left: 6px; }
+th:nth-of-type(2) { width: 40%; text-align: left; padding-left: 6px; }
+th:nth-of-type(3) { width: 30%; text-align: center; }
+th:nth-of-type(4) { width: 25%; text-align: center; }
 
 td:nth-of-type(1) { width: 5%; vertical-align: top; }
 td:nth-of-type(2) { width: 40%; vertical-align: center; }
@@ -149,10 +161,6 @@ tbody tr:nth-child(even) {
   background-color: #d2d4d8;
 }
 
-caption {
-  background-color: #ce453b;
-  color: white;
-}
 .sort-by {
   cursor: pointer;
 }
@@ -173,9 +181,5 @@ caption {
 }
 
 
-
 // TODO
-
-// leaderboard needs box shadow
-// header add logo
-// header set position fixed
+// create SVG ogo
