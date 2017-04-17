@@ -4,11 +4,11 @@ import axios from 'axios';
 
 function LoadingDots() {
   return (
-    <div>
-      <p className="loading">
-        <span>.</span><span>.</span><span>.</span>
-      </p>
-    </div>
+    <p className="loading">
+      <span>.</span>
+      <span>.</span>
+      <span>.</span>
+    </p>
   );
 }
 
@@ -70,7 +70,7 @@ TableBody.propTypes = {
 function Table({ users, sortBy, onClickSort, loading }) {
   return (
     <table>
-      <caption><h1>Leaderboard</h1></caption>
+      <caption><img className="logo" src="img/logo.svg" alt="logo" /></caption>
       <thead className="sticky">
         <tr>
           <th>#</th>

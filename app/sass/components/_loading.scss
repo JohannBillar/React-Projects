@@ -1,18 +1,14 @@
-@keyframes blink {
-  0% { 
-    opacity: .2;
-  }
-  20% {
-    opacity: 1;
-  }
-  100% {
-    opacity: .2;
-  }
-}
 p.loading {
   margin: 0;
   padding: 0;
 }
+
+@keyframes blink {
+  0%   { opacity: .2; }
+  20%  { opacity:  1; }
+  100% { opacity: .2; }
+}
+
 .loading span {
   font-size: 4em;
   line-height: 0;
@@ -27,9 +23,3 @@ p.loading {
     animation-delay: .4s;
   }
 }
-// .loading span:nth-child(2) {
-//   animation-delay: .2s;
-// }
-// .loading &:nth-child(3) {
-//   animation-delay: .4s;
-// }
