@@ -41,12 +41,14 @@ function TableBody({ users, sortBy, loading }) {
   let count = 0;
   return (
     loading ? (
-      <tr>
-        <td><LoadingDots /></td>
-        <td><LoadingDots /></td>
-        <td><LoadingDots /></td>
-        <td><LoadingDots /></td>
-      </tr>
+      <tbody>
+        <tr>
+          <td><LoadingDots /></td>
+          <td><LoadingDots /></td>
+          <td><LoadingDots /></td>
+          <td><LoadingDots /></td>
+        </tr>
+      </tbody>
     ) : (
       <tbody>
         {sorted.map((user, idx) => {
@@ -136,10 +138,11 @@ class Leaderboard extends React.Component {
 
   getUserData(sort) {
     axios.get(`https://fcctop100.herokuapp.com/api/fccusers/top/${sort}`)
-      .then(response => this.setState({ users: response.data }))
+      .then(response => this.setState({
+        users: response.data,
+        isLoading: false,
+      }))
       .catch(error => console.log(error));
-
-    this.setState({ isLoading: false });
   }
 
   handleSortBy(sort) {
