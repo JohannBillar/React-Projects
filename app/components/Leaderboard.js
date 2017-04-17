@@ -2,11 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-function TableRow(props) {
-  const { img, username, alltime, recent } = props.user;
+function LoadingDots() {
+  return (
+    <div>
+      <p className="loading">
+        <span>.</span><span>.</span><span>.</span>
+      </p>
+    </div>
+  );
+}
+
+function TableRow({ user, rank }) {
+  const { username, img, recent, alltime } = user;
   return (
     <tr>
-      <td>{props.rank}</td>
+      <td>{rank}</td>
       <td><a href={`https://www.freecodecamp.com/${username}`}><img src={img} alt="user profile" />{username}</a></td>
       <td>{recent}</td>
       <td>{alltime}</td>
@@ -15,18 +25,11 @@ function TableRow(props) {
 }
 
 TableRow.propTypes = {
-  user: PropTypes.shape({
-    img: PropTypes.string,
-    username: PropTypes.string,
-    alltime: PropTypes.number,
-    recent: PropTypes.number,
-  }),
+  user: PropTypes.object,
   rank: PropTypes.number,
 };
 
-function TableBody(props) {
-  const { users, sortBy } = props;
-  let count = 0;
+function TableBody({ users, sortBy, loading }) {
   const sorted = users.sort((prevUser, currUser) => {
     if (sortBy === 'recent') {
       return prevUser.recent > currUser.recent ? -1 : 1;
@@ -35,23 +38,34 @@ function TableBody(props) {
     }
   });
 
+  let count = 0;
   return (
-    <tbody>
-      {sorted.map((user, idx) => {
-        count += 1;
-        return <TableRow user={user} key={idx} rank={count} />;
-      })}
-    </tbody>
+    loading ? (
+      <tr>
+        <td><LoadingDots /></td>
+        <td><LoadingDots /></td>
+        <td><LoadingDots /></td>
+        <td><LoadingDots /></td>
+      </tr>
+    ) : (
+      <tbody>
+        {sorted.map((user, idx) => {
+          count += 1;
+          return <TableRow user={user} key={idx} rank={count} loading={loading} />;
+        })}
+      </tbody>
+    )
   );
 }
 
 TableBody.propTypes = {
   users: PropTypes.arrayOf(PropTypes.object),
   sortBy: PropTypes.string,
+  loading: PropTypes.bool,
 };
 
 
-function Table({ users, sortBy, onClickSort }) {
+function Table({ users, sortBy, onClickSort, loading }) {
   return (
     <table>
       <caption><h1>Leaderboard</h1></caption>
@@ -74,6 +88,7 @@ function Table({ users, sortBy, onClickSort }) {
       <TableBody
         users={users}
         sortBy={sortBy}
+        loading={loading}
       />
     </table>
   );
@@ -83,6 +98,7 @@ Table.propTypes = {
   users: PropTypes.arrayOf(PropTypes.object),
   sortBy: PropTypes.string,
   onClickSort: PropTypes.func,
+  loading: PropTypes.bool,
 };
 
 class Leaderboard extends React.Component {
@@ -92,6 +108,7 @@ class Leaderboard extends React.Component {
     this.state = {
       users: [],
       sortBy: 'recent',
+      isLoading: true,
     };
     this.handleSortBy = this.handleSortBy.bind(this);
   }
@@ -121,6 +138,8 @@ class Leaderboard extends React.Component {
     axios.get(`https://fcctop100.herokuapp.com/api/fccusers/top/${sort}`)
       .then(response => this.setState({ users: response.data }))
       .catch(error => console.log(error));
+
+    this.setState({ isLoading: false });
   }
 
   handleSortBy(sort) {
@@ -135,6 +154,7 @@ class Leaderboard extends React.Component {
           users={this.state.users}
           sortBy={this.state.sortBy}
           onClickSort={this.handleSortBy}
+          loading={this.state.isLoading}
         />
       </div>
     );
