@@ -4,7 +4,7 @@ var webpack = require('webpack');
 module.exports = {
   context: __dirname,
   entry: [
-    './app/index.jsx'
+    './app/index.js'
   ],
   output: {
     path: path.join(__dirname, '/public'),
