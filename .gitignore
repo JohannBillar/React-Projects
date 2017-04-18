@@ -2,7 +2,7 @@
 
 node_modules/
 public/bundle.js
-public/images/
+public/img/
 
 .config.js
 
