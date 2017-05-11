@@ -20,6 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.14.0",
+    "bootstrap": "^3.3.7",
     "compression": "^1.6.2",
     "express": "^4.14.0",
     "if-env": "^1.0.0",
@@ -28,7 +29,7 @@
     "react": "^15.5.0",
     "react-addons-css-transition-group": "^15.4.1",
     "react-addons-transition-group": "^15.4.1",
-    "react-bootstrap": "^0.30.8",
+    "react-bootstrap": "^0.31.0",
     "react-dom": "^15.4.1",
     "react-redux": "^5.0.4",
     "react-router": "^4.0.0",

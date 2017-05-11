@@ -1,11 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
 // import App from './components/App';
-import MyModal from './components/Modal';
+import RecipeModal from './components/RecipeModal';
 
-require('./sass/main.scss');
+// TODO are webpack loader to import bootstrap
+// TODO remove css from js bundle into style link
+// import 'bootstrap/dist/css/bootstrap.css';
+import './sass/main.scss';
 
 render(
-  <MyModal />,
+  <RecipeModal />,
   document.getElementById('app')
 );
